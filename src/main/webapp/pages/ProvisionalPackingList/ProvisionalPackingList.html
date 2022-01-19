@@ -1,0 +1,214 @@
+<wm-page data-ng-controller="ProvisionalPackingListPageController" pagetitle="Provisional Packing List" name="page1"> 
+    <wm-header content="header" name="header1"> 
+        <wm-param name="pTitle" value="bind:Variables.statPrgname.dataSet.dataValue" type="string"></wm-param> 
+    </wm-header> 
+    <wm-top-nav content="CartoningMainMenuNav" name="top_nav1"></wm-top-nav> 
+    <wm-content name="content1"> 
+        <wm-page-content columnwidth="12" name="page_content1"> 
+            <wm-layoutgrid name="layoutgrid2" width="80%"> 
+                <wm-gridrow name="gridrow3"> 
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn5"> 
+                        <wm-composite name="composite1"> 
+                            <wm-label class="col-md-3 control-label" name="label5" caption="Order No. :"></wm-label> 
+                            <wm-container class="col-md-9" name="container1"> 
+                                <wm-text name="txtOrdnum" width="120" on-change="txtOrdnumChange($event, $scope, newVal, oldVal)" datavalue="bind:pageParams.pOrdnum" placeholder="Enter Order No."></wm-text> 
+                            </wm-container> 
+                        </wm-composite> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn6"> 
+                        <wm-composite name="composite8"> 
+                            <wm-label class="col-md-3 control-label" name="label17" caption="Shp :"></wm-label> 
+                            <wm-container class="col-md-9" name="container9"> 
+                                <wm-select name="txtShpnum" dataset="bind:Variables.svQryShpnum.dataSet" datafield="shpnum" displayfield="shpnum" width="100" placeholder="Choose Shp" on-change="txtShpnumChange($event, $scope, newVal, oldVal)" datavalue="bind:pageParams.pShpnum"></wm-select> 
+                            </wm-container> 
+                        </wm-composite> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn9"> 
+                        <wm-composite name="composite9"> 
+                            <wm-label class="col-md-3 control-label" name="label24" caption="Part Shp :"></wm-label> 
+                            <wm-container class="col-md-9" name="container10"> 
+                                <wm-select name="txtPshpnum" datavalue="bind:pageParams.pPshpnum" dataset="bind:Variables.svQryPartShpnum.dataSet" datafield="pshpnum" displayfield="pshpnum" width="100" placeholder="Choose Part Shp" on-change="txtPshpnumChange($event, $scope, newVal, oldVal)"></wm-select> 
+                            </wm-container> 
+                        </wm-composite> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn10"> 
+                        <wm-buttongroup name="buttongroup1"> 
+                            <wm-button class="btn-primary" type="button" caption="Query" name="btnQuery" on-click="btnQueryClick($event, $scope)"></wm-button> 
+                            <wm-button class="btn-transparent" type="button" caption="Reset" name="btnReset" margin="unset unset unset 20px" on-click="btnResetClick($event, $scope)"></wm-button> 
+                        </wm-buttongroup> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn32"> 
+                        <wm-button class="btn-default" caption="Create Packing List" type="button" margin="unset unset unset 0.5em" name="btnCreatePKL" on-click="btnCreatePKLClick($event, $scope)" disabled="bind:(Widgets.lblProvpklstatus.caption==&quot;FIN&quot;)?true:false" accessroles="PROVPKL_INS_UPD_DEL"></wm-button> 
+                    </wm-gridcolumn> 
+                </wm-gridrow> 
+                <wm-gridrow name="gridrow14"> 
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn28"> 
+                        <wm-label padding="unset 0.5em" name="label8" class="displayPrompt" caption="Client Code :"></wm-label> 
+                        <wm-label padding="unset 0.5em" name="lblClicod" class="displayField" caption="bind:Variables.tgridPKL.FRow.clicod"></wm-label> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn29"> 
+                        <wm-label padding="unset 0.5em" name="label18" caption="Client Order No. :" class="displayPrompt"></wm-label> 
+                        <wm-label padding="unset 0.5em" name="lblClionum" class="displayField" caption="bind:Variables.svQryGetShpDetails.dataSet.clionum"></wm-label> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn30"> 
+                        <wm-label padding="unset 0.5em" name="label20" caption="Client Packing Type :" class="displayPrompt"></wm-label> 
+                        <wm-label padding="unset 0.5em" name="lblClipcktyp" class="displayField" caption="bind:Variables.svQryGetShpDetails.dataSet.clipcktyp"></wm-label> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn31"> 
+                        <wm-label padding="unset 0.5em" name="label22" caption="CMT Packing Type :" class="displayPrompt"></wm-label> 
+                        <wm-label padding="unset 0.5em" name="lblPcktyp" class="displayField" caption="bind:Variables.svQryGetShpDetails.dataSet.cmtpackingtype"></wm-label> 
+                    </wm-gridcolumn> 
+                </wm-gridrow> 
+            </wm-layoutgrid> 
+            <wm-layoutgrid name="layoutgrid2_1"> 
+                <wm-gridrow name="gridrow6_1"> 
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn14"> 
+                        <wm-label padding="unset 0.5em" name="lblUserInstruction" class="label-info" caption="Provisional Packing List has not yet been defined. Click on 'create packing list' to proceed." show="bind:(Variables.svCr800pk0QryProvPKL.dataSet.poutPkl.length==0)?true:false"></wm-label> 
+                    </wm-gridcolumn> 
+                </wm-gridrow> 
+                <wm-gridrow name="gridrow4_1" padding="10px unset unset unset"> 
+                    <wm-gridcolumn columnwidth="8" name="gridcolumn18"> 
+                        <wm-container name="containerProvPKLStatus"> 
+                            <wm-layoutgrid name="layoutgrid4_1"> 
+                                <wm-gridrow name="gridrow14_1"> 
+                                    <wm-gridcolumn columnwidth="3" name="gridcolumn33_2"> 
+                                        <wm-label padding="unset 0.5em" name="label10" caption="Prov Packing List Status :" class="displayPrompt text-info" fontweight="bold" show="true"></wm-label> 
+                                        <wm-label padding="unset 0.5em" name="lblProvpklstatus" class="displayField text-info" caption="bind:Variables.tgridPKL.FRow.provpklstatus" fontweight="bold" show="true"></wm-label> 
+                                    </wm-gridcolumn> 
+                                    <wm-gridcolumn columnwidth="9" name="gridcolumn34_1"> 
+                                        <wm-container name="container8" show="bind:(Widgets.lblProvpklstatus.caption==&quot;FIN&quot;)?true:false"> 
+                                            <wm-label padding="unset 0.5em" name="label12" class="displayPrompt text-info" caption="Prov PKL Finalised On/By :"></wm-label> 
+                                            <wm-label padding="unset 0.5em" name="lblProvpklfindat" class="displayField text-info" caption="bind:Variables.tgridPKL.FRow.provpklfindat"></wm-label> 
+                                            <wm-label padding="unset 0.5em" name="lblProvpklfinby" class="displayField text-info" caption="bind:Variables.tgridPKL.FRow.provpklfinby"></wm-label> 
+                                        </wm-container> 
+                                    </wm-gridcolumn> 
+                                </wm-gridrow> 
+                                <wm-gridrow name="gridrow15_1"></wm-gridrow> 
+                            </wm-layoutgrid> 
+                        </wm-container> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn13_1"></wm-gridcolumn> 
+                </wm-gridrow> 
+                <wm-gridrow name="gridrow5"> 
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn15" padding="10px unset unset unset"> 
+                        <wm-container name="gridPKL" id="tgridPKL" height="100%" width="100%"></wm-container> 
+                    </wm-gridcolumn> 
+                </wm-gridrow> 
+                <wm-gridrow name="gridrow13"> 
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn25_1"> 
+                        <wm-button class="btn-default" caption="Save Changes" type="button" margin="unset 0.5em" name="btnSaveCtnNumAssign" on-click="btnSaveCtnNumAssignClick($event, $scope)" disabled="bind:(Widgets.lblProvpklstatus.caption==&quot;FIN&quot;)?true:false" accessroles="PROVPKL_INS_UPD_DEL" show="bind:((Variables.svCr800pk0QryProvPKL.dataSet.poutPkl.length>0)&amp;&amp;(Variables.svCr800pk0CheckUserAccess.dataSet.userhasaccess==&quot;Y&quot;))?true:false"></wm-button> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn34"> 
+                        <wm-button class="btn-default" caption="bind:&quot;Delete carton Type &quot; + Variables.tgridPKL.FRow.ctntype" type="button" margin="unset 0.5em" name="btnDeletePKLRow" show="bind:((Variables.svCr800pk0QryProvPKL.dataSet.poutPkl.length>0)&amp;&amp;(Variables.svCr800pk0CheckUserAccess.dataSet.userhasaccess==&quot;Y&quot;))?true:false" on-click="btnDeletePKLRowClick($event, $scope)" accessroles="PROVPKL_INS_UPD_DEL" disabled="bind:(Widgets.lblProvpklstatus.caption==&quot;FIN&quot;)?true:false"></wm-button> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn26_1" padding="unset unset unset 5px"> 
+                        <wm-button class="btn-default" caption="Add carton types in PKL" type="button" margin="unset 0.5em" name="btnAddCtntype" hint="Add carton types to Packing List" on-click="btnAddCtntypeClick($event, $scope)" show="bind:((Variables.svCr800pk0QryProvPKL.dataSet.poutPkl.length>0)&amp;&amp;(Variables.svCr800pk0CheckUserAccess.dataSet.userhasaccess==&quot;Y&quot;))?true:false" disabled="bind:(Widgets.lblProvpklstatus.caption==&quot;FIN&quot;)?true:false" accessroles="PROVPKL_INS_UPD_DEL"></wm-button> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn27"> 
+                        <wm-button class="btn-default" caption="Finalise Provisional PKL" type="button" margin="unset 0.5em" name="btnFinalisePKL" disabled="bind:(Widgets.lblProvpklstatus.caption==&quot;FIN&quot;)?true:false" on-click="btnFinalisePKLClick($event, $scope)" accessroles="PROVPKL_FINALISE" show="true"></wm-button> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="5" name="gridcolumn31_1"> 
+                        <wm-button class="btn-default" caption="Provisional Packing List Report" type="button" margin="unset 0.5em" name="btnViewPKLReport" iconclass="wi wi-file-download" on-click="btnViewPKLReportClick($event, $scope)"></wm-button> 
+                    </wm-gridcolumn> 
+                </wm-gridrow> 
+                <wm-gridrow name="gridrow15"> 
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn33"> 
+                        <wm-container name="containerUnFin" show="bind:(Widgets.lblProvpklstatus.caption==&quot;FIN&quot;)?true:false" margin="10px unset unset unset" accessroles="PROVPKL_UNFINALISE"> 
+                            <wm-label class="col-md-2 control-label" name="label24_1" caption="Reason to Unfinalise :"></wm-label> 
+                            <wm-container class="col-md-6" name="container10_1"> 
+                                <wm-textarea name="txtUnfinReason" placeholder="Enter Reason to unfinalise packing list"></wm-textarea> 
+                            </wm-container> 
+                            <wm-button class="btn-default" caption="Unfinalise PKL" type="button" margin="unset 0.5em" name="btnUnFinalisePKL" on-click="btnUnFinalisePKLClick($event, $scope)" accessroles="PROVPKL_UNFINALISE"></wm-button> 
+                        </wm-container> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn33_1"></wm-gridcolumn> 
+                </wm-gridrow> 
+            </wm-layoutgrid> 
+        </wm-page-content> 
+    </wm-content> 
+    <wm-footer content="footer" name="footer1"></wm-footer> 
+    <wm-view class="dialog-view" name="view1"> 
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}" on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog> 
+    </wm-view> 
+    <wm-view class="dialog-view" name="view3"> 
+        <wm-dialog dialogtype="design-dialog" modal="true" title="bind:(Variables.statPKLDialogTitle.dataSet.dataValue==&quot;ADDPKL&quot;)?&quot;Create Packing List&quot;:&quot;Add Carton types to Packing List&quot;" iconclass="" name="dialogCreateProvPKL" height="80%" width="80%" on-opened="dialogCreateProvPKLOpened($event, $scope)" on-close="dialogCreateProvPKLClose($event, $scope)"> 
+            <wm-dialogactions name="dialogactions1" show="false"> 
+                <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button5"></wm-button> 
+            </wm-dialogactions> 
+            <wm-layoutgrid name="layoutgrid4"> 
+                <wm-gridrow name="gridrow7_1"> 
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn15_1"> 
+                        <wm-composite name="composite1"> 
+                            <wm-label class="col-md-3 control-label" name="label1" caption="Order No :"></wm-label> 
+                            <wm-container name="container1"> 
+                                <wm-text name="txtCreateOrdnum" placeholder="Enter Order No" width="120" on-change="txtCreateOrdnumChange($event, $scope, newVal, oldVal)" disabled="bind:(Variables.statPKLDialogTitle.dataSet.dataValue==&quot;EDITPKL&quot;)?true:false"></wm-text> 
+                            </wm-container> 
+                        </wm-composite> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn16"> 
+                        <wm-composite name="composite2"> 
+                            <wm-label class="col-md-2 control-label" name="label4_1" caption="Shp :"></wm-label> 
+                            <wm-container name="container2"> 
+                                <wm-select name="txtCreateShpnum" dataset="bind:Variables.svQryShpnum.dataSet" datafield="shpnum" displayfield="shpnum" width="80" placeholder="Shipment" on-change="txtCreateShpnumChange($event, $scope, newVal, oldVal)" disabled="bind:(Variables.statPKLDialogTitle.dataSet.dataValue==&quot;EDITPKL&quot;)?true:false"></wm-select> 
+                            </wm-container> 
+                        </wm-composite> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn21_1"></wm-gridcolumn> 
+                </wm-gridrow> 
+                <wm-gridrow name="gridrow11_1"> 
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn23_2"> 
+                        <wm-label padding="unset 0.5em" name="label15" caption="Choose a Part Shipment or tick to create new part shipment:" fontweight="bold" class="yellow-l1" show="bind:(Variables.statPKLDialogTitle.dataSet.dataValue==&quot;ADDPKL&quot;)?true:false"></wm-label> 
+                    </wm-gridcolumn> 
+                </wm-gridrow> 
+                <wm-gridrow name="gridrow8"> 
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn17_1"> 
+                        <wm-composite name="composite3" margin="5px unset unset unset"> 
+                            <wm-label class="col-md-4 control-label" name="label5" caption="Part Shipment :"></wm-label> 
+                            <wm-container class="col-md-3" name="container3"> 
+                                <wm-select name="txtCreatePshpnum" placeholder="Choose part shp" datafield="pshpnum" disabled="bind:(Widgets.chkCreatePshp.datavalue==&quot;Y&quot;)?true:false" dataset="bind:Variables.svQryPshpnumCreateEditProvPKL.dataSet" readonly="bind:(Variables.statPKLDialogTitle.dataSet.dataValue==&quot;EDITPKL&quot;)?true:false" displayfield="pshpnum"></wm-select> 
+                            </wm-container> 
+                        </wm-composite> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn18_1"> 
+                        <wm-composite name="composite4" show="bind:(Variables.statPKLDialogTitle.dataSet.dataValue==&quot;ADDPKL&quot;)?true:false"> 
+                            <wm-checkbox caption="Create Part Shipment" class="col-md-10" name="chkCreatePshp" checkedvalue="Y" uncheckedvalue="N" datavalue="N" margin="unset unset unset 5px"></wm-checkbox> 
+                        </wm-composite> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn22_1"></wm-gridcolumn> 
+                </wm-gridrow> 
+                <wm-gridrow name="gridrow11"> 
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn23_1"> 
+                        <wm-table title="" dataset="bind:Variables.svCr800pk0CartonDef.dataSet.poutCtntype" navigation="None" name="gridCtntype" spacing="condensed" radioselect="false" multiselect="true" showrecordcount="true" subheading="Choose carton types to include in Packing List" class="panel-info" height="300" showrowindex="false" nodatamessage="Carton types not defined or All cartontypes already included in Packing List" width="90%" on-select="gridCtntypeSelect($event, $scope, $rowData)" on-deselect="gridCtntypeDeselect($event, $scope, $rowData)"> 
+                            <wm-table-column binding="ctntype" caption="Carton</br>Type" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column> 
+                            <wm-table-column binding="ctndimension" caption="Dimension" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column> 
+                            <wm-table-column binding="ctndes" caption="Content" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column> 
+                            <wm-table-column binding="ctnwgt" caption="Empty Carton</br>Wgt" widget-type="label" width="90px" textalignment="right" edit-widget-type="text" type="string" show="true" readonly="false"> 
+                                <wm-label caption="{{row.getProperty('ctnwgt').toLocaleString()}}" class="" data-ng-class=""></wm-label> 
+                            </wm-table-column> 
+                            <wm-table-column binding="grswgt" caption="Gross</br>Wgt" widget-type="label" width="90px" textalignment="right" edit-widget-type="text" type="string" show="true" readonly="false"> 
+                                <wm-label caption="{{row.getProperty('grswgt').toLocaleString()}}" class="" data-ng-class=""></wm-label> 
+                            </wm-table-column> 
+                        </wm-table> 
+                    </wm-gridcolumn> 
+                </wm-gridrow> 
+                <wm-gridrow name="gridrow12_1"> 
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn26" padding="10px unset unset unset"> 
+                        <wm-label padding="unset 0.5em" name="label16" caption="bind:&quot;No of carton types selected : &quot; + Widgets.gridCtntype.selectedItems.length" fontsize="-4"></wm-label> 
+                    </wm-gridcolumn> 
+                </wm-gridrow> 
+                <wm-gridrow name="gridrow12"> 
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn25" padding="5px unset unset unset"> 
+                        <wm-button class="btn-default" caption="Add to Packing List" type="button" margin="unset 0.5em 5em 0.5em" name="btnAddToProvPKL" on-click="btnAddToProvPKLClick($event, $scope)"></wm-button> 
+                        <wm-button class="btn-default" caption="Close" type="button" margin="unset 0.5em 5em 0.5em" name="btnClose" on-click="Widgets.dialogCreateProvPKL.close()"></wm-button> 
+                    </wm-gridcolumn> 
+                </wm-gridrow> 
+            </wm-layoutgrid> 
+        </wm-dialog> 
+    </wm-view> 
+    <wm-view class="dialog-view" name="view3_1" viewgroup="default"> 
+        <wm-confirmdialog name="confirmdialogUnfinalise" message="Are you sure you want to unfinalise Provisional Packing List?" title="Please Confirm" canceltext="NO" oktext="YES" on-ok="Variables.svCr800pk0UnfinaliseProvPKL.invoke()" on-cancel="Widgets.confirmdialogUnfinalise.close()" modal="true" iconclass="wi wi-question-answer"></wm-confirmdialog> 
+    </wm-view> 
+    <wm-view class="dialog-view" name="view4"> 
+        <wm-confirmdialog name="confirmdialogDeletePKLRow" title="Please Confirm" message="bind:&quot;Are you sure to delete carton type &quot; + Variables.statCtntypetoDelete.dataSet.dataValue + &quot; ?&quot;" oktext="YES" canceltext="NO" iconclass="" on-ok="Variables.svCr800pk0DeleteCtntype.invoke()" on-cancel="Widgets.confirmdialogDeletePKLRow.close()"></wm-confirmdialog> 
+    </wm-view> 
+</wm-page>

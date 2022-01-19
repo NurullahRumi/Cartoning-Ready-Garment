@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <sql-query name="qryProvPKL">
+        <![CDATA[
+        select ordnum,
+ctntype,
+shpnum,
+pshpnum,
+seqnum,
+fromctn,
+toctn,
+plngrswgt,
+plnctnwgt,
+plnqtyperctn,
+ctnlen,
+ctnwid,
+ctnhgt,
+creatid,
+creatdat,
+totgrswgt,
+totnetwgt,
+totvol,
+totqty,
+totctn,
+modid,
+moddat
+from crt800
+where ordnum = :pOrdnum
+and shpnum like nvl(:pShpnum,'%')
+and pshpnum like nvl(:pPshpnum,'%')
+        ]]>
+    <query-param name="pOrdnum" type="java.lang.String"/>
+    <query-param name="pShpnum" type="java.lang.String"/>
+    <query-param name="pPshpnum" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryPartShpCreateEditProvPKL">
+        <![CDATA[
+        select pshpnum
+from sht700
+where (provpklstatus is null or provpklstatus ='WIP')
+and ordnum = :pOrdnum
+and shpnum = :pShpnum
+and ((:pOperation ='ADDPKL' and 
+       not exists (select 1 
+                from crt800
+                where crt800.ordnum = sht700.ordnum
+                and crt800.shpnum = sht700.shpnum
+                and crt800.pshpnum = sht700.pshpnum
+                )
+     )
+     or (:pOperation = 'EDITPKL')
+     )
+order by lpad(pshpnum,2,'0')
+        ]]>
+    <query-param name="pOrdnum" type="java.lang.String"/>
+    <query-param name="pShpnum" type="java.lang.String"/>
+    <query-param name="pOperation" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryPartShpCreateEditProvPKL__count">
+        <![CDATA[
+        select count(*) from (select pshpnum
+from sht700
+where (provpklstatus is null or provpklstatus ='WIP')
+and ordnum = :pOrdnum
+and shpnum = :pShpnum
+and ((:pOperation ='ADDPKL' and 
+       not exists (select 1 
+                from crt800
+                where crt800.ordnum = sht700.ordnum
+                and crt800.shpnum = sht700.shpnum
+                and crt800.pshpnum = sht700.pshpnum
+                )
+     )
+     or (:pOperation = 'EDITPKL')
+     )
+order by lpad(pshpnum,2,'0')) wmTempTable
+        ]]>
+    <query-param name="pOrdnum" type="java.lang.String"/>
+    <query-param name="pShpnum" type="java.lang.String"/>
+    <query-param name="pOperation" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryCheckUserAccess">
+        <![CDATA[
+        select cr800pk0_provpkl.sfunc_user_has_access(upper(:SERVER__USER_NAME__pUsrid), :pOrdnum,:pShpnum,:pPshpnum) userHasAccess
+from dual
+        ]]>
+    <query-param name="SERVER__USER_NAME__pUsrid" type="java.lang.String"/>
+    <query-param name="pOrdnum" type="java.lang.String"/>
+    <query-param name="pShpnum" type="java.lang.String"/>
+    <query-param name="pPshpnum" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryCheckUserAccess__count">
+        <![CDATA[
+        select count(*) from (select cr800pk0_provpkl.sfunc_user_has_access(upper(:SERVER__USER_NAME__pUsrid), :pOrdnum,:pShpnum,:pPshpnum) userHasAccess
+from dual) wmTempTable
+        ]]>
+    <query-param name="SERVER__USER_NAME__pUsrid" type="java.lang.String"/>
+    <query-param name="pOrdnum" type="java.lang.String"/>
+    <query-param name="pShpnum" type="java.lang.String"/>
+    <query-param name="pPshpnum" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryGetPartShpnum">
+        <![CDATA[
+        select pshpnum
+from sht700
+where ordnum = :pOrdnum
+and shpnum = :pShpnum
+order by lpad(pshpnum,2,'0')
+        ]]>
+    <query-param name="pOrdnum" type="java.lang.String"/>
+    <query-param name="pShpnum" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryGetPartShpnum__count">
+        <![CDATA[
+        select count(*) from (select pshpnum
+from sht700
+where ordnum = :pOrdnum
+and shpnum = :pShpnum
+order by lpad(pshpnum,2,'0')) wmTempTable
+        ]]>
+    <query-param name="pOrdnum" type="java.lang.String"/>
+    <query-param name="pShpnum" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryGetShpDetails">
+        <![CDATA[
+        select ordnum, shpnum, shpdst, clionum, clipcktyp,
+      (select itemdes from rft850 where itemcod=ort205.pcktyp and lovfld='PCKTYP') CMTPackingtype
+      
+from ort205
+where ordnum = :pOrdnum
+and shpnum = :pShpnum
+        ]]>
+    <query-param name="pOrdnum" type="java.lang.String"/>
+    <query-param name="pShpnum" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryGetShpDetails__count">
+        <![CDATA[
+        select count(*) from (select ordnum, shpnum, shpdst, clionum, clipcktyp,
+      (select itemdes from rft850 where itemcod=ort205.pcktyp and lovfld='PCKTYP') CMTPackingtype
+      
+from ort205
+where ordnum = :pOrdnum
+and shpnum = :pShpnum) wmTempTable
+        ]]>
+    <query-param name="pOrdnum" type="java.lang.String"/>
+    <query-param name="pShpnum" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryPartShpWIP">
+        <![CDATA[
+        select pshpnum
+from sht700
+where (provpklstatus is null or provpklstatus ='WIP')
+and ordnum = :pOrdnum
+and shpnum = :pShpnum
+order by lpad(pshpnum,2,'0')
+        ]]>
+    <query-param name="pOrdnum" type="java.lang.String"/>
+    <query-param name="pShpnum" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryPartShpWIP__count">
+        <![CDATA[
+        select count(*) from (select pshpnum
+from sht700
+where (provpklstatus is null or provpklstatus ='WIP')
+and ordnum = :pOrdnum
+and shpnum = :pShpnum
+order by lpad(pshpnum,2,'0')) wmTempTable
+        ]]>
+    <query-param name="pOrdnum" type="java.lang.String"/>
+    <query-param name="pShpnum" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryCallFmbPath">
+        <![CDATA[
+        select sy9200pk0.sproc_call_fmbpath(:pFmbprogid, :pOtherParams) progurl
+from dual
+        ]]>
+    <query-param name="pFmbprogid" type="java.lang.String"/>
+    <query-param name="pOtherParams" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryCallFmbPath__count">
+        <![CDATA[
+        select count(*) from (select sy9200pk0.sproc_call_fmbpath(:pFmbprogid, :pOtherParams) progurl
+from dual) wmTempTable
+        ]]>
+    <query-param name="pFmbprogid" type="java.lang.String"/>
+    <query-param name="pOtherParams" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryShpnum">
+        <![CDATA[
+        select shpnum, shpdst, clionum, clipcktyp,
+      (select itemdes from rft850 where itemcod=ort205.pcktyp and lovfld='PCKTYP') CMTPackingtype
+      
+from ort205
+where ordnum = :pOrdnum
+order by lpad(shpnum,2,'0')
+        ]]>
+    <query-param name="pOrdnum" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryShpnum__count">
+        <![CDATA[
+        select count(*) from (select shpnum, shpdst, clionum, clipcktyp,
+      (select itemdes from rft850 where itemcod=ort205.pcktyp and lovfld='PCKTYP') CMTPackingtype
+      
+from ort205
+where ordnum = :pOrdnum
+order by lpad(shpnum,2,'0')) wmTempTable
+        ]]>
+    <query-param name="pOrdnum" type="java.lang.String"/>
+    </sql-query>
+</hibernate-mapping>

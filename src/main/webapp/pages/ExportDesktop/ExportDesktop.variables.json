@@ -1,0 +1,133 @@
+{
+  "notifMsg" : {
+    "_id" : "wm-notifMsg-wm.NotificationVariable-1512472178678",
+    "name" : "notifMsg",
+    "owner" : "Page",
+    "category" : "wm.NotificationVariable",
+    "dataBinding" : [ {
+      "target" : "title",
+      "value" : "bind:Variables.statPrgName.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "alerttype",
+      "value" : "error",
+      "type" : "string"
+    } ],
+    "operation" : "alert"
+  },
+  "statPrgid" : {
+    "_id" : "wm-statPrgid-wm.Variable-1512465474197",
+    "name" : "statPrgid",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "CR1100W20",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "statPrgName" : {
+    "_id" : "wm-statPrgName-wm.Variable-1512465500977",
+    "name" : "statPrgName",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Export Desktop",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "svProcCR1100PK0_CR210pShpDet" : {
+    "_id" : "wm-svProcCR1100PK0_CR210pShpDet-wm.ServiceVariable-1512470117362",
+    "name" : "svProcCR1100PK0_CR210pShpDet",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.gridDetail.selecteditem.ordnum",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.ProcCr1100pk0Cr210pShpDetResponse",
+    "service" : "pfsdb",
+    "operation" : "executeProcCR1100PK0_CR210pShpDet",
+    "operationId" : "ProcedureExecutionController_executeProcCR1100PK0_CR210pShpDet",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svProcCR1100PK0_GetCR210OrderDet" : {
+    "_id" : "wm-svProcCR1100PK0_GetCR210OrderDet-wm.ServiceVariable-1512466851352",
+    "name" : "svProcCR1100PK0_GetCR210OrderDet",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pPrgid",
+      "value" : "bind:Variables.statPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.formFilter.formWidgets.pOrdnum.datavalue",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.ProcCr1100pk0GetCr210orderDetResponse",
+    "service" : "pfsdb",
+    "operation" : "executeProcCR1100PK0_GetCR210OrderDet",
+    "operationId" : "ProcedureExecutionController_executeProcCR1100PK0_GetCR210OrderDet",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onBeforeUpdate" : "svProcCR1100PK0_GetCR210OrderDetonBeforeUpdate($event, $scope)",
+    "onError" : "svProcCR1100PK0_GetCR210OrderDetonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svSY006pk0CallRepUrl" : {
+    "_id" : "wm-svSY006pk0CallRepUrl-wm.ServiceVariable-1528455711916",
+    "name" : "svSY006pk0CallRepUrl",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.Sy006pk0RunrepCallUrlResponse",
+    "service" : "pfsdb",
+    "operation" : "executeSy006pk0_runrepCallUrl",
+    "operationId" : "ProcedureExecutionController_executeSy006pk0_runrepCallUrl",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svSY006pk0CallRepUrlonSuccess($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  }
+}

@@ -1,0 +1,24 @@
+<wm-partial name="partial1" data-ng-controller="pageTopNavPageController" type="topnav"> 
+    <wm-navbar name="navbar1"> 
+        <wm-nav name="nav1" type="navbar" class="navbar-left"> 
+            <wm-nav-item name="nav_item8"> 
+                <wm-anchor on-click="Actions.goToPage_Main.invoke()" caption="Home" iconclass="glyphicon glyphicon-home" name="anchor4"></wm-anchor> 
+            </wm-nav-item> 
+            <wm-nav-item name="nav_item1"> 
+                <wm-anchor show="false" name="anchorHome" caption="Export Desktop" iconclass="glyphicon glyphicon-home" on-click="Actions.goToPage_ExportDesktop.invoke()"></wm-anchor> 
+            </wm-nav-item> 
+            <wm-nav-item name="nav_item2"> 
+                <wm-anchor on-click="anchorPartialShpClick($event, $scope)" name="anchorPartialShp" caption="Partial Shipment" iconclass="wi wi-open-in-new"></wm-anchor> 
+            </wm-nav-item> 
+            <wm-nav-item name="nav_item3"></wm-nav-item> 
+            <wm-nav-item name="nav_item7"></wm-nav-item> 
+        </wm-nav> 
+        <wm-nav name="nav2" type="navbar" class="navbar-right"> 
+            <wm-nav-item name="nav_item4"> 
+                <wm-anchor name="anchor3" caption="Help" iconclass="glyphicon glyphicon-question-sign"></wm-anchor> 
+            </wm-nav-item> 
+            <wm-nav-item name="nav_item5"></wm-nav-item> 
+            <wm-nav-item name="nav_item6"></wm-nav-item> 
+        </wm-nav> 
+    </wm-navbar> 
+</wm-partial>

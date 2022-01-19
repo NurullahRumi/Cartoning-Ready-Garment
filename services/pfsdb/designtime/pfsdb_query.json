@@ -1,0 +1,680 @@
+{
+  "qryCallFmbPath" : {
+    "name" : "qryCallFmbPath",
+    "description" : "call Fmb prog path",
+    "version" : "V2",
+    "queryString" : "select sy9200pk0.sproc_call_fmbpath(:pFmbprogid, :pOtherParams) progurl\nfrom dual",
+    "countQueryString" : "select count(*) from (select sy9200pk0.sproc_call_fmbpath(:pFmbprogid, :pOtherParams) progurl\nfrom dual) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "pFmbprogid",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "/prod/pfs/sh/frm/sh750oc0.fmx",
+      "required" : false
+    }, {
+      "name" : "pOtherParams",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "p_ordnum=",
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryCallFmbPathResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "SINGLE",
+      "properties" : [ {
+        "name" : "PROGURL",
+        "fieldName" : "progurl",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryCheckUserAccess" : {
+    "name" : "qryCheckUserAccess",
+    "description" : "check if user has access",
+    "version" : "V2",
+    "queryString" : "select cr800pk0_provpkl.sfunc_user_has_access(upper(:pUsrid), :pOrdnum,:pShpnum,:pPshpnum) userHasAccess\nfrom dual",
+    "countQueryString" : "select count(*) from (select cr800pk0_provpkl.sfunc_user_has_access(upper(:pUsrid), :pOrdnum,:pShpnum,:pPshpnum) userHasAccess\nfrom dual) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "pUsrid",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "SERVER",
+      "variableName" : "USER_NAME",
+      "testValue" : "d004",
+      "required" : true
+    }, {
+      "name" : "pOrdnum",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1800502A",
+      "required" : false
+    }, {
+      "name" : "pShpnum",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1",
+      "required" : false
+    }, {
+      "name" : "pPshpnum",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1",
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryCheckUserAccessResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "SINGLE",
+      "properties" : [ {
+        "name" : "USERHASACCESS",
+        "fieldName" : "userhasaccess",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryGetPartShpnum" : {
+    "name" : "qryGetPartShpnum",
+    "description" : "query get part shipments",
+    "version" : "V2",
+    "queryString" : "select pshpnum\nfrom sht700\nwhere ordnum = :pOrdnum\nand shpnum = :pShpnum\norder by lpad(pshpnum,2,'0')",
+    "countQueryString" : "select count(*) from (select pshpnum\nfrom sht700\nwhere ordnum = :pOrdnum\nand shpnum = :pShpnum\norder by lpad(pshpnum,2,'0')) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "pOrdnum",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "F40128CM",
+      "required" : false
+    }, {
+      "name" : "pShpnum",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1",
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryGetPartShpnumResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "PSHPNUM",
+        "fieldName" : "pshpnum",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryGetShpDetails" : {
+    "name" : "qryGetShpDetails",
+    "description" : "get shipment details",
+    "version" : "V2",
+    "queryString" : "select ordnum, shpnum, shpdst, clionum, clipcktyp,\n      (select itemdes from rft850 where itemcod=ort205.pcktyp and lovfld='PCKTYP') CMTPackingtype\n      \nfrom ort205\nwhere ordnum = :pOrdnum\nand shpnum = :pShpnum",
+    "countQueryString" : "select count(*) from (select ordnum, shpnum, shpdst, clionum, clipcktyp,\n      (select itemdes from rft850 where itemcod=ort205.pcktyp and lovfld='PCKTYP') CMTPackingtype\n      \nfrom ort205\nwhere ordnum = :pOrdnum\nand shpnum = :pShpnum) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "pOrdnum",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1800502A",
+      "required" : false
+    }, {
+      "name" : "pShpnum",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1",
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryGetShpDetailsResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "SINGLE",
+      "properties" : [ {
+        "name" : "ORDNUM",
+        "fieldName" : "ordnum",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "SHPNUM",
+        "fieldName" : "shpnum",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "SHPDST",
+        "fieldName" : "shpdst",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "CLIONUM",
+        "fieldName" : "clionum",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "CLIPCKTYP",
+        "fieldName" : "clipcktyp",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "CMTPACKINGTYPE",
+        "fieldName" : "cmtpackingtype",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryPartShpCreateEditProvPKL" : {
+    "name" : "qryPartShpCreateEditProvPKL",
+    "description" : "qry pshpnum for which prov pkl not yet defined",
+    "version" : "V2",
+    "queryString" : "select pshpnum\nfrom sht700\nwhere (provpklstatus is null or provpklstatus ='WIP')\nand ordnum = :pOrdnum\nand shpnum = :pShpnum\nand ((:pOperation ='ADDPKL' and \n       not exists (select 1 \n                from crt800\n                where crt800.ordnum = sht700.ordnum\n                and crt800.shpnum = sht700.shpnum\n                and crt800.pshpnum = sht700.pshpnum\n                )\n     )\n     or (:pOperation = 'EDITPKL')\n     )\norder by lpad(pshpnum,2,'0')",
+    "countQueryString" : "select count(*) from (select pshpnum\nfrom sht700\nwhere (provpklstatus is null or provpklstatus ='WIP')\nand ordnum = :pOrdnum\nand shpnum = :pShpnum\nand ((:pOperation ='ADDPKL' and \n       not exists (select 1 \n                from crt800\n                where crt800.ordnum = sht700.ordnum\n                and crt800.shpnum = sht700.shpnum\n                and crt800.pshpnum = sht700.pshpnum\n                )\n     )\n     or (:pOperation = 'EDITPKL')\n     )\norder by lpad(pshpnum,2,'0')) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "pOrdnum",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1800502A",
+      "required" : false
+    }, {
+      "name" : "pShpnum",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1",
+      "required" : false
+    }, {
+      "name" : "pOperation",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "EDITPKL",
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryPartShpCreateEditProvPklResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "PSHPNUM",
+        "fieldName" : "pshpnum",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryPartShpWIP" : {
+    "name" : "qryPartShpWIP",
+    "description" : "query part shp for which provisional PKL WIP",
+    "version" : "V2",
+    "queryString" : "select pshpnum\nfrom sht700\nwhere (provpklstatus is null or provpklstatus ='WIP')\nand ordnum = :pOrdnum\nand shpnum = :pShpnum\norder by lpad(pshpnum,2,'0')",
+    "countQueryString" : "select count(*) from (select pshpnum\nfrom sht700\nwhere (provpklstatus is null or provpklstatus ='WIP')\nand ordnum = :pOrdnum\nand shpnum = :pShpnum\norder by lpad(pshpnum,2,'0')) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "pOrdnum",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1800502A",
+      "required" : false
+    }, {
+      "name" : "pShpnum",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1",
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryPartShpWipResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "PSHPNUM",
+        "fieldName" : "pshpnum",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryProvPKL" : {
+    "name" : "qryProvPKL",
+    "description" : "query provisional packing list",
+    "version" : "V2",
+    "queryString" : "select ordnum,\nctntype,\nshpnum,\npshpnum,\nseqnum,\nfromctn,\ntoctn,\nplngrswgt,\nplnctnwgt,\nplnqtyperctn,\nctnlen,\nctnwid,\nctnhgt,\ncreatid,\ncreatdat,\ntotgrswgt,\ntotnetwgt,\ntotvol,\ntotqty,\ntotctn,\nmodid,\nmoddat\nfrom crt800\nwhere ordnum = :pOrdnum\nand shpnum like nvl(:pShpnum,'%')\nand pshpnum like nvl(:pPshpnum,'%')",
+    "countQueryString" : null,
+    "nativeSql" : true,
+    "fetchCount" : false,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "pOrdnum",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1800502A",
+      "required" : false
+    }, {
+      "name" : "pShpnum",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1",
+      "required" : false
+    }, {
+      "name" : "pPshpnum",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1",
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryProvPklResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "ORDNUM",
+        "fieldName" : "ordnum",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "CTNTYPE",
+        "fieldName" : "ctntype",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "SHPNUM",
+        "fieldName" : "shpnum",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "PSHPNUM",
+        "fieldName" : "pshpnum",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "SEQNUM",
+        "fieldName" : "seqnum",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Short",
+          "list" : false
+        }
+      }, {
+        "name" : "FROMCTN",
+        "fieldName" : "fromctn",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Short",
+          "list" : false
+        }
+      }, {
+        "name" : "TOCTN",
+        "fieldName" : "toctn",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Short",
+          "list" : false
+        }
+      }, {
+        "name" : "PLNGRSWGT",
+        "fieldName" : "plngrswgt",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Float",
+          "list" : false
+        }
+      }, {
+        "name" : "PLNCTNWGT",
+        "fieldName" : "plnctnwgt",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Float",
+          "list" : false
+        }
+      }, {
+        "name" : "PLNQTYPERCTN",
+        "fieldName" : "plnqtyperctn",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Integer",
+          "list" : false
+        }
+      }, {
+        "name" : "CTNLEN",
+        "fieldName" : "ctnlen",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Float",
+          "list" : false
+        }
+      }, {
+        "name" : "CTNWID",
+        "fieldName" : "ctnwid",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Float",
+          "list" : false
+        }
+      }, {
+        "name" : "CTNHGT",
+        "fieldName" : "ctnhgt",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Float",
+          "list" : false
+        }
+      }, {
+        "name" : "CREATID",
+        "fieldName" : "creatid",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "CREATDAT",
+        "fieldName" : "creatdat",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.time.LocalDateTime",
+          "list" : false
+        }
+      }, {
+        "name" : "TOTGRSWGT",
+        "fieldName" : "totgrswgt",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Double",
+          "list" : false
+        }
+      }, {
+        "name" : "TOTNETWGT",
+        "fieldName" : "totnetwgt",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Double",
+          "list" : false
+        }
+      }, {
+        "name" : "TOTVOL",
+        "fieldName" : "totvol",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Float",
+          "list" : false
+        }
+      }, {
+        "name" : "TOTQTY",
+        "fieldName" : "totqty",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Integer",
+          "list" : false
+        }
+      }, {
+        "name" : "TOTCTN",
+        "fieldName" : "totctn",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Short",
+          "list" : false
+        }
+      }, {
+        "name" : "MODID",
+        "fieldName" : "modid",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "MODDAT",
+        "fieldName" : "moddat",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.time.LocalDateTime",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryShpnum" : {
+    "name" : "qryShpnum",
+    "description" : "query shipments",
+    "version" : "V2",
+    "queryString" : "select shpnum, shpdst, clionum, clipcktyp,\n      (select itemdes from rft850 where itemcod=ort205.pcktyp and lovfld='PCKTYP') CMTPackingtype\n      \nfrom ort205\nwhere ordnum = :pOrdnum\norder by lpad(shpnum,2,'0')",
+    "countQueryString" : "select count(*) from (select shpnum, shpdst, clionum, clipcktyp,\n      (select itemdes from rft850 where itemcod=ort205.pcktyp and lovfld='PCKTYP') CMTPackingtype\n      \nfrom ort205\nwhere ordnum = :pOrdnum\norder by lpad(shpnum,2,'0')) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "pOrdnum",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "1800502A",
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryShpnumResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "SHPNUM",
+        "fieldName" : "shpnum",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "SHPDST",
+        "fieldName" : "shpdst",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "CLIONUM",
+        "fieldName" : "clionum",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "CLIPCKTYP",
+        "fieldName" : "clipcktyp",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "CMTPACKINGTYPE",
+        "fieldName" : "cmtpackingtype",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  }
+}

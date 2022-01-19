@@ -1,0 +1,133 @@
+[ {
+  "name" : "CartoningMainMenuNav",
+  "type" : "TOPNAV",
+  "params" : [ ]
+}, {
+  "name" : "Common",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
+  "name" : "ExportDesktop",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "pParam1",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "Login",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "Main",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "ProvisionalPackingList",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "pOrdnum",
+    "type" : "string"
+  }, {
+    "name" : "pShpnum",
+    "type" : "string"
+  }, {
+    "name" : "pPshpnum",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "QryCartonedPreExportDetails",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "pParam1",
+    "type" : "string"
+  }, {
+    "name" : "pOrdnum",
+    "type" : "string"
+  }, {
+    "name" : "pShpnum",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "QryCartonsByColour",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "pParam1",
+    "type" : "string"
+  }, {
+    "name" : "pOrdnum",
+    "type" : "string"
+  }, {
+    "name" : "pGmtseq",
+    "type" : "integer"
+  }, {
+    "name" : "pClrseqg",
+    "type" : "integer"
+  } ]
+}, {
+  "name" : "QryPackingList",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "pOrdnum",
+    "type" : "string"
+  }, {
+    "name" : "pShpnum",
+    "type" : "string"
+  }, {
+    "name" : "pPshpnum",
+    "type" : "integer"
+  }, {
+    "name" : "pParam1",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "footer",
+  "type" : "FOOTER",
+  "params" : [ ]
+}, {
+  "name" : "header",
+  "type" : "HEADER",
+  "params" : [ {
+    "name" : "pTitle",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "leftnav",
+  "type" : "LEFTNAV",
+  "params" : [ ]
+}, {
+  "name" : "pageTopNav",
+  "type" : "TOPNAV",
+  "params" : [ {
+    "name" : "pCalledFromProgID",
+    "type" : "string"
+  }, {
+    "name" : "pOrdnum",
+    "type" : "string"
+  }, {
+    "name" : "pShpnum",
+    "type" : "string"
+  }, {
+    "name" : "pPshpnum",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "rightnav",
+  "type" : "RIGHTNAV",
+  "params" : [ ]
+}, {
+  "name" : "topnav",
+  "type" : "TOPNAV",
+  "params" : [ {
+    "name" : "pOrdnum",
+    "type" : "string"
+  }, {
+    "name" : "pShpnum",
+    "type" : "string"
+  }, {
+    "name" : "pPshpnum",
+    "type" : "string"
+  }, {
+    "name" : "pCalledFromProgID",
+    "type" : "string"
+  } ]
+} ]

@@ -1,0 +1,359 @@
+<wm-page data-ng-controller="QryPackingListPageController" pagetitle="Query Packing List" name="page1"> 
+    <wm-header content="header" name="header1"> 
+        <wm-param name="pTitle" value="bind:Variables.statPrgName.dataSet.dataValue" type="string"></wm-param> 
+    </wm-header> 
+    <wm-top-nav name="top_nav1" content="CartoningMainMenuNav"></wm-top-nav> 
+    <wm-content name="content1"> 
+        <wm-page-content columnwidth="12" name="page_content1"> 
+            <wm-form errormessage="" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="get" captionalign="left" name="formFilter"> 
+                <wm-layoutgrid columns="1" name="layoutgrid1"> 
+                    <wm-gridrow name="gridrow1"> 
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn1"> 
+                            <wm-form-field width="120" placeholder="Enter OrderNo" readonly="false" name="pOrdnum" displayname="Search Order No" key="pOrdnum" type="string" show="true" widget="text" defaultvalue="bind:pageParams.pOrdnum" on-change="pOrdnumChange($event, $scope, newVal, oldVal)"></wm-form-field> 
+                        </wm-gridcolumn> 
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn4"> 
+                            <wm-form-field placeholder="" width="70" readonly="false" name="pShpnum" displayname="Shp Num" key="pShpnum" type="string" show="true" widget="text" defaultvalue="bind:pageParams.pShpnum" on-change="pShpnumChange($event, $scope, newVal, oldVal)"></wm-form-field> 
+                        </wm-gridcolumn> 
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn5"> 
+                            <wm-form-field inputtype="text" placeholder="" textalign="center" width="80" readonly="false" name="pPShpnum" displayname="Part Shp Num" key="pPShpnum" type="integer" show="true" widget="number" defaultvalue="bind:pageParams.pPshpnum"></wm-form-field> 
+                        </wm-gridcolumn> 
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn6"> 
+                            <wm-buttongroup horizontalalign="left" class="form-action col-md-12" name="buttongroup1"> 
+                                <wm-button caption="Query" type="submit" class="btn-primary" name="button3" margin="15px unset unset unset" on-click="button3Click($event, $scope)"></wm-button> 
+                                <wm-button caption="Reset" type="reset" class="btn-secondary" name="button1" margin="15px unset unset unset" on-click="button1Click($event, $scope)"></wm-button> 
+                            </wm-buttongroup> 
+                        </wm-gridcolumn> 
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn7"></wm-gridcolumn> 
+                    </wm-gridrow> 
+                </wm-layoutgrid> 
+            </wm-form> 
+            <wm-table width="90%" pagesize="3" title="" dataset="bind:Variables.svProcCR1100PK0_GetSht700Det.dataSet.poutPshpDet" navigation="Classic" name="gridMaster" spacing="condensed" gridfirstrowselect="true" showrecordcount="true"> 
+                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="100px" caption="Order" binding="ordnum"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="120px" caption="Client" binding="wclicod"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="50px" caption="Shp" binding="shpnum"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="50px" caption="Part</br>Shp" binding="pshpnum"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="50px" caption="Shp</br>Mode" binding="pshpmod"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="100px" caption="Client Order #" binding="wclionum"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" formatpattern="toDate" datepattern="dd-MMM-yyyy" type="datetime" edit-widget-type="datetime" width="100px" caption="Shipment" binding="wsshpdat"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="long" edit-widget-type="number" textalignment="right" width="60px" caption="Pack</br>Unit" binding="wpckunt"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="50px" caption="Fin</br>Unit" binding="finlcn"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="50px" caption="Status" binding="status"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" formatpattern="toDate" datepattern="dd-MMM-yyyy HH:mm" type="datetime" edit-widget-type="datetime" width="120px" caption="Fin Date" binding="findat"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" formatpattern="toDate" datepattern="dd-MMM-yyyy HH:mm" type="datetime" edit-widget-type="datetime" width="120px" caption="Delivery</br>Date" binding="deldat"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="180px" caption="Invoice#" binding="invoiceno"></wm-table-column> 
+            </wm-table> 
+            <wm-layoutgrid name="layoutgrid4"> 
+                <wm-gridrow name="gridrow7"> 
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn16"> 
+                        <wm-table class="panel-info" subheading="Packs" pagesize="2" showrecordcount="true" showheader="true" nodatamessage="No Packs found" title="" dataset="bind:Variables.svProcCR1100PK0_CR610PklQty.dataSet.poutPacks" navigation="Classic" name="gridDetail" gridfirstrowselect="true" spacing="condensed"> 
+                            <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="30px" caption="Pack" binding="seqcod"></wm-table-column> 
+                            <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="100px" caption="Pack Description" binding="wpckdes"></wm-table-column> 
+                        </wm-table> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn name="gridcolumn89" columnwidth="2"></wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn17"> 
+                        <wm-tile width="500px" height="130px" class="well" name="tile1"> 
+                            <wm-label textdecoration="underline" padding="unset unset 5px unset" fontweight="bold" name="tileTitle" caption="Weight and Volume for all Packs" fontsize="1.1" fontunit="em"></wm-label> 
+                            <wm-layoutgrid name="layoutgrid3"> 
+                                <wm-gridrow name="gridrow3"> 
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn8"> 
+                                        <wm-label name="label5" caption="Gross Wgt (Kgs)" class="col-md-3 control-label" textalign="right" margin="unset 5px unset unset" width="100"></wm-label> 
+                                        <wm-label padding="unset 0.5em" name="label6" class="displayField" width="100" caption="bind:Widgets.gridMaster.selecteditem.wgrswgt.toLocaleString()" textalign="right"></wm-label> 
+                                    </wm-gridcolumn> 
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn9"> 
+                                        <wm-label name="label11" caption="ExpQty" class="col-md-3 control-label" width="70" textalign="right" margin="unset 5px unset unset"></wm-label> 
+                                        <wm-label name="label14" class="displayField col-md-6" margin="unset 5px unset unset" width="70" caption="bind:Widgets.gridMaster.selecteditem.pqtyord.toLocaleString()" textalign="right"></wm-label> 
+                                        <wm-label name="lblPACKDES" class="displayField col-md-6" width="60" caption="bind:Widgets.gridMaster.selecteditem.pckunitdesc"></wm-label> 
+                                    </wm-gridcolumn> 
+                                </wm-gridrow> 
+                                <wm-gridrow name="gridrow4"> 
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn10"> 
+                                        <wm-label name="label7" caption="Net Wgt (Kgs)" class="col-md-3 control-label" textalign="right" margin="unset 5px unset unset" width="100"></wm-label> 
+                                        <wm-label padding="unset 0.5em" name="label8" class="displayField" width="100" caption="bind:Widgets.gridMaster.selecteditem.wnetwgt.toLocaleString()" textalign="right"></wm-label> 
+                                    </wm-gridcolumn> 
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn11"> 
+                                        <wm-label name="label12" caption="Total Ctns" class="col-md-3 control-label" width="70" textalign="right" margin="unset 5px unset unset"></wm-label> 
+                                        <wm-label padding="unset 0.5em" name="label12_1" class="displayField" width="70" caption="bind:Widgets.gridMaster.selecteditem.wtotctns.toLocaleString()" textalign="right"></wm-label> 
+                                    </wm-gridcolumn> 
+                                </wm-gridrow> 
+                                <wm-gridrow name="gridrow6"> 
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn14"> 
+                                        <wm-label name="label9" caption="Volume (cm3 )" class="col-md-3 control-label" margin="unset 5px unset unset" textalign="right" width="100"></wm-label> 
+                                        <wm-label padding="unset 0.5em" name="label10" class="displayField" width="100" caption="bind:Widgets.gridMaster.selecteditem.wtotvol.toLocaleString()" textalign="right"></wm-label> 
+                                    </wm-gridcolumn> 
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn15"></wm-gridcolumn> 
+                                </wm-gridrow> 
+                            </wm-layoutgrid> 
+                        </wm-tile> 
+                    </wm-gridcolumn> 
+                </wm-gridrow> 
+            </wm-layoutgrid> 
+            <wm-table class="panel-info" subheading="bind:&quot;Qty for Order &quot; + Widgets.gridDetail.selecteditem.ordnum + &quot; Shp &quot; + Widgets.gridDetail.selecteditem.shpnum + &quot; PShp &quot; + Widgets.gridDetail.selecteditem.pshpnum + &quot; Pack &quot; + Widgets.gridDetail.selecteditem.seqcod" title="" dataset="bind:Variables.svProcCR1100PK0_CR610PklQtyPerPack.dataSet.poutpackSze" navigation="Classic" name="grid3" spacing="condensed" gridfirstrowselect="true" showrecordcount="true"> 
+                <wm-table-column readonly="false" show="true" type="integer" edit-widget-type="number" textalignment="right" width="50px" caption="Sq" binding="aseqnum"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="50px" caption="Typ" binding="ctntype"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="integer" edit-widget-type="number" textalignment="right" width="50px" caption="From</br>Carton #" binding="fromctn"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="integer" edit-widget-type="number" textalignment="right" width="50px" caption="To</br>Carton #" binding="toctn"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" textalignment="right" width="60px" caption="No. </br>Cartons" binding="wnumctns"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="120px" caption="Last</br>Carton #" binding="barcode"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="120px" caption="Dimension (cm)" binding="dimdes"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="integer" edit-widget-type="number" textalignment="right" width="80px" caption="Total</br>Qty" binding="totqty"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="long" edit-widget-type="number" textalignment="right" width="70px" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[0].szeseqdes" binding="wqty1"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="long" edit-widget-type="number" textalignment="right" width="70px" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[1].szeseqdes" binding="wqty2"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="long" edit-widget-type="number" textalignment="right" width="70px" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[2].szeseqdes" binding="wqty3"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="long" edit-widget-type="number" textalignment="right" width="70px" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[3].szeseqdes" binding="wqty4"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="long" edit-widget-type="number" textalignment="right" width="70px" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[4].szeseqdes" binding="wqty5"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="long" edit-widget-type="number" textalignment="right" width="70px" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[5].szeseqdes" binding="wqty6"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="long" edit-widget-type="number" textalignment="right" width="70px" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[6].szeseqdes" binding="wqty7"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="long" edit-widget-type="number" textalignment="right" width="70px" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[7].szeseqdes" binding="wqty8"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="long" edit-widget-type="number" textalignment="right" width="70px" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[8].szeseqdes" binding="wqty9"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="long" edit-widget-type="number" textalignment="right" width="70px" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[9].szeseqdes" binding="wqty10"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="long" edit-widget-type="number" textalignment="right" width="70px" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[10].szeseqdes" binding="wqty11"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="long" edit-widget-type="number" textalignment="right" width="70px" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[11].szeseqdes" binding="wqty12"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="long" edit-widget-type="number" textalignment="right" width="70px" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[12].szeseqdes" binding="wqty13"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="long" edit-widget-type="number" textalignment="right" width="70px" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[13].szeseqdes" binding="wqty14"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="long" edit-widget-type="number" textalignment="right" width="70px" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[14].szeseqdes" binding="wqty15"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="long" edit-widget-type="number" textalignment="right" width="70px" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[15].szeseqdes" binding="wqty16"></wm-table-column> 
+            </wm-table> 
+            <wm-layoutgrid class="bordered" name="layoutgrid4_1"> 
+                <wm-gridrow class="text-info" name="gridrow15_1"> 
+                    <wm-gridcolumn name="gridcolumn88" columnwidth="12"> 
+                        <wm-label fontsize="14" caption="bind:&quot;Summary for Order &quot; + Widgets.gridDetail.selecteditem.ordnum + &quot; Shp &quot; +Widgets.gridDetail.selecteditem.shpnum + &quot; PShp &quot; + Widgets.gridDetail.selecteditem.pshpnum + &quot; Pack &quot; + Widgets.gridDetail.selecteditem.seqcod" fontweight="bold" class="col-md-12 control-label" name="label80_1" padding="unset 0.5em"></wm-label> 
+                    </wm-gridcolumn> 
+                </wm-gridrow> 
+                <wm-gridrow padding="5px unset unset unset" class="text-info" name="gridrow6_1"> 
+                    <wm-gridcolumn columnwidth="8" name="gridcolumn14_1"> 
+                        <wm-layoutgrid name="layoutgrid5"> 
+                            <wm-gridrow name="gridrow8"> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn18"></wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn26"> 
+                                    <wm-label textalign="center" name="label64_1" class="col-md-12 control-label" width="60" caption="bind:(Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[0].szeseqdes==undefined||Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[0].szeseqdes==null||Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[0].szeseqdes==&quot;&quot;)?&quot; </br>.&quot;:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[0].szeseqdes"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn27"> 
+                                    <wm-label textalign="center" name="label65_1" class="col-md-12 control-label" width="60" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[1].szeseqdes"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn28"> 
+                                    <wm-label textalign="center" name="label66_1" class="col-md-12 control-label" width="60" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[2].szeseqdes"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn29"> 
+                                    <wm-label textalign="center" name="label67_1" class="col-md-12 control-label" width="60" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[3].szeseqdes"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn19"> 
+                                    <wm-label textalign="center" name="label68_1" class="col-md-12 control-label" width="60" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[4].szeseqdes"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn102" columnwidth="1"> 
+                                    <wm-label textalign="center" name="label69_1" class="col-md-12 control-label" width="60" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[5].szeseqdes"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn103" columnwidth="1"> 
+                                    <wm-label textalign="center" name="label72" class="col-md-12 control-label" width="60" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[6].szeseqdes"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn104_1" columnwidth="1"> 
+                                    <wm-label textalign="center" name="label71" class="col-md-12 control-label" width="60" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[7].szeseqdes"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn96" columnwidth="1"> 
+                                    <wm-label textalign="center" name="label73" class="col-md-12 control-label" width="60" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[8].szeseqdes"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn95" columnwidth="1"> 
+                                    <wm-label textalign="center" name="label74" class="col-md-12 control-label" width="60" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[9].szeseqdes"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn106_2" columnwidth="1"> 
+                                    <wm-label textalign="center" name="label75" class="col-md-12 control-label" width="60" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[10].szeseqdes"></wm-label> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                            <wm-gridrow name="gridrow9"> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn20"> 
+                                    <wm-label textalign="right" padding="unset 0.5em" name="label13" caption="Qty in PS" class="badge"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn30"> 
+                                    <wm-label class="displayField" width="60" name="label64" caption="bind:Widgets.gridDetail.selecteditem.wctnqty1.toLocaleString()
+" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn31"> 
+                                    <wm-label class="displayField" width="60" name="label65" caption="bind:Widgets.gridDetail.selecteditem.wctnqty2.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn32"> 
+                                    <wm-label name="label22" class="displayField" width="60" caption="bind:Widgets.gridDetail.selecteditem.wctnqty3.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn33"> 
+                                    <wm-label class="displayField" width="60" name="label25" caption="bind:Widgets.gridDetail.selecteditem.wctnqty4.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn21"> 
+                                    <wm-label class="displayField" width="60" name="label28" caption="bind:Widgets.gridDetail.selecteditem.wctnqty5.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn105_1" columnwidth="1"> 
+                                    <wm-label class="displayField" width="60" name="label31" caption="bind:Widgets.gridDetail.selecteditem.wctnqty6.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn106_1" columnwidth="1"> 
+                                    <wm-label class="displayField" width="60" name="label34" caption="bind:Widgets.gridDetail.selecteditem.wctnqty7.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn107_1" columnwidth="1"> 
+                                    <wm-label class="displayField" width="60" name="label37" caption="bind:Widgets.gridDetail.selecteditem.wctnqty8.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn97" columnwidth="1"> 
+                                    <wm-label class="displayField" width="60" name="label40" caption="bind:Widgets.gridDetail.selecteditem.wctnqty9.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn98" columnwidth="1"> 
+                                    <wm-label class="displayField" width="60" name="label43" caption="bind:Widgets.gridDetail.selecteditem.wctnqty10.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn103_1" columnwidth="1"> 
+                                    <wm-label class="displayField" width="60" name="label46" caption="bind:Widgets.gridDetail.selecteditem.wctnqty11.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                            <wm-gridrow name="gridrow12"> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn54"> 
+                                    <wm-label textalign="right" padding="unset 0.5em" name="label14_1" caption="Qty Ord" class="badge"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn72"> 
+                                    <wm-label class="displayField" width="60" name="label66" caption="bind:Widgets.gridDetail.selecteditem.wqtyord1.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn73"> 
+                                    <wm-label class="displayField" width="60" name="label67" caption="bind:Widgets.gridDetail.selecteditem.wqtyord2.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn74"> 
+                                    <wm-label class="displayField" width="60" name="label23" caption="bind:Widgets.gridDetail.selecteditem.wqtyord3.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn75"> 
+                                    <wm-label class="displayField" width="60" name="label26" caption="bind:Widgets.gridDetail.selecteditem.wqtyord4.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn59"> 
+                                    <wm-label class="displayField" width="60" name="label29" caption="bind:Widgets.gridDetail.selecteditem.wqtyord5.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn108_1" columnwidth="1"> 
+                                    <wm-label class="displayField" width="60" name="label32" caption="bind:Widgets.gridDetail.selecteditem.wqtyord6.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn109_1" columnwidth="1"> 
+                                    <wm-label class="displayField" width="60" name="label35" caption="bind:Widgets.gridDetail.selecteditem.wqtyord7.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn110_1" columnwidth="1"> 
+                                    <wm-label class="displayField" width="60" name="label38" caption="bind:Widgets.gridDetail.selecteditem.wqtyord8.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn99" columnwidth="1"> 
+                                    <wm-label class="displayField" width="60" name="label41" caption="bind:Widgets.gridDetail.selecteditem.wqtyord9.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn100" columnwidth="1"> 
+                                    <wm-label class="displayField" width="60" name="label44" caption="bind:Widgets.gridDetail.selecteditem.wqtyord10.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn104_2" columnwidth="1"> 
+                                    <wm-label class="displayField" width="60" name="label47" caption="bind:Widgets.gridDetail.selecteditem.wqtyord11.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                            <wm-gridrow name="gridrow14"> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn86"> 
+                                    <wm-label textalign="right" padding="unset 0.5em" name="label15" caption="Balance" class="badge"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn104"> 
+                                    <wm-label class="displayField" width="60" name="label68" caption="bind:Widgets.gridDetail.selecteditem.wbal1.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn105"> 
+                                    <wm-label class="displayField" width="60" name="label69" caption="bind:Widgets.gridDetail.selecteditem.wbal2.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn106"> 
+                                    <wm-label class="displayField" width="60" name="label24" caption="bind:Widgets.gridDetail.selecteditem.wbal3.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn107"> 
+                                    <wm-label class="displayField" width="60" name="label27" caption="bind:Widgets.gridDetail.selecteditem.wbal4.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn91"> 
+                                    <wm-label class="displayField" width="60" name="label30" caption="bind:Widgets.gridDetail.selecteditem.wbal5.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn111_1" columnwidth="1"> 
+                                    <wm-label class="displayField" width="60" name="label33" caption="bind:Widgets.gridDetail.selecteditem.wbal6.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn112_1" columnwidth="1"> 
+                                    <wm-label class="displayField" width="60" name="label36" caption="bind:Widgets.gridDetail.selecteditem.wbal7.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn113_1" columnwidth="1"> 
+                                    <wm-label class="displayField" width="60" name="label39" caption="bind:Widgets.gridDetail.selecteditem.wbal8.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn101" columnwidth="1"> 
+                                    <wm-label class="displayField" width="60" name="label42" caption="bind:Widgets.gridDetail.selecteditem.wbal9.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn102_1" columnwidth="1"> 
+                                    <wm-label class="displayField" width="60" name="label45" caption="bind:Widgets.gridDetail.selecteditem.wbal10.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn105_2" columnwidth="1"> 
+                                    <wm-label class="displayField" width="60" name="label48" caption="bind:Widgets.gridDetail.selecteditem.wbal11.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                        </wm-layoutgrid> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn15_1"> 
+                        <wm-layoutgrid name="layoutgrid6"> 
+                            <wm-gridrow name="gridrow10"> 
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn39"> 
+                                    <wm-label textalign="center" name="label76" class="col-md-12 control-label" width="60" caption="bind:(Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[11].szeseqdes==undefined||Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[11].szeseqdes==null||Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[11].szeseqdes==&quot;&quot;)?&quot; </br>.&quot;:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[11].szeseqdes"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn40"> 
+                                    <wm-label textalign="center" name="label77" class="col-md-12 control-label" width="60" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[12].szeseqdes"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn41"> 
+                                    <wm-label textalign="center" name="label78" class="col-md-12 control-label" width="60" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[13].szeseqdes"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn42"> 
+                                    <wm-label textalign="center" name="label79" class="col-md-12 control-label" width="60" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[14].szeseqdes"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn43"> 
+                                    <wm-label textalign="center" name="label80" class="col-md-12 control-label" width="60" caption="bind:Variables.svCR1100pk0FetchSizes.dataSet.poutSizeList[15].szeseqdes"></wm-label> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                            <wm-gridrow name="gridrow11"> 
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn49"> 
+                                    <wm-label class="displayField" width="60" name="label49" caption="bind:Widgets.gridDetail.selecteditem.wctnqty12.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn50"> 
+                                    <wm-label class="displayField" width="60" name="label52" caption="bind:Widgets.gridDetail.selecteditem.wctnqty13.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn51"> 
+                                    <wm-label class="displayField" width="60" name="label55" caption="bind:Widgets.gridDetail.selecteditem.wctnqty14.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn52"> 
+                                    <wm-label class="displayField" width="60" name="label58" caption="bind:Widgets.gridDetail.selecteditem.wctnqty15.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn53"> 
+                                    <wm-label class="displayField" width="60" name="label61" caption="bind:Widgets.gridDetail.selecteditem.wctnqty16.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                            <wm-gridrow name="gridrow13"> 
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn81"> 
+                                    <wm-label class="displayField" width="60" name="label50" caption="bind:Widgets.gridDetail.selecteditem.wqtyord12.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn82"> 
+                                    <wm-label class="displayField" width="60" name="label53" caption="bind:Widgets.gridDetail.selecteditem.wqtyord13.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn83"> 
+                                    <wm-label class="displayField" width="60" name="label56" caption="bind:Widgets.gridDetail.selecteditem.wqtyord14.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn85"> 
+                                    <wm-label class="displayField" width="60" name="label59" caption="bind:Widgets.gridDetail.selecteditem.wqtyord15.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn84"> 
+                                    <wm-label class="displayField" width="60" name="label62" caption="bind:Widgets.gridDetail.selecteditem.wqtyord16.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                            <wm-gridrow name="gridrow15"> 
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn113"> 
+                                    <wm-label class="displayField" width="60" name="label51" caption="bind:Widgets.gridDetail.selecteditem.wbal12.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn114"> 
+                                    <wm-label class="displayField" width="60" name="label54" caption="bind:Widgets.gridDetail.selecteditem.wbal13.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn115"> 
+                                    <wm-label class="displayField" width="60" name="label57" caption="bind:Widgets.gridDetail.selecteditem.wbal14.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn116"> 
+                                    <wm-label class="displayField" width="60" name="label60" caption="bind:Widgets.gridDetail.selecteditem.wbal15.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn117"> 
+                                    <wm-label class="displayField" width="60" name="label63" caption="bind:Widgets.gridDetail.selecteditem.wbal16.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                        </wm-layoutgrid> 
+                    </wm-gridcolumn> 
+                </wm-gridrow> 
+            </wm-layoutgrid> 
+        </wm-page-content> 
+    </wm-content> 
+    <wm-footer content="footer" name="footer1"></wm-footer> 
+    <wm-view class="dialog-view" name="view1"> 
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}" on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog> 
+    </wm-view> 
+</wm-page>

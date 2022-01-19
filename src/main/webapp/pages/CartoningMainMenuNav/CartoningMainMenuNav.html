@@ -1,0 +1,32 @@
+<wm-partial name="partial1" data-ng-controller="CartoningMainMenuNavPageController" type="topnav"> 
+    <wm-navbar name="navbar1"> 
+        <wm-nav name="nav1" type="navbar" class="navbar-left"> 
+            <wm-nav-item name="nav_item1"> 
+                <wm-anchor name="anchor1" caption="Home" iconclass="glyphicon glyphicon-home" on-click="Variables.goToPage_Main.invoke()"></wm-anchor> 
+            </wm-nav-item> 
+            <wm-nav-item name="nav_item9"> 
+                <wm-anchor on-click="Actions.goToPage_ExportDesktop.invoke()" caption="Export Desktop" iconclass="" name="anchor7"></wm-anchor> 
+            </wm-nav-item> 
+            <wm-nav-item name="nav_item2"> 
+                <wm-anchor on-click="Actions.goToPage_QryPackingList.invoke()" name="anchor2" caption="View CMT Packing List" iconclass=""></wm-anchor> 
+            </wm-nav-item> 
+            <wm-nav-item name="nav_item3"></wm-nav-item> 
+            <wm-nav-item name="nav_item7"> 
+                <wm-anchor on-click="Actions.goToPage_QryCartonedPreExportDetails.invoke()" caption="Cartoning vs PreExport" iconclass="" name="anchor5"></wm-anchor> 
+            </wm-nav-item> 
+            <wm-nav-item name="nav_item8"> 
+                <wm-anchor caption="Cartons By Colour" on-click="Actions.goToPage_QryCartonsByColour.invoke()" iconclass="" name="anchor6"></wm-anchor> 
+            </wm-nav-item> 
+            <wm-nav-item name="nav_item10"> 
+                <wm-anchor name="anchor7_1" iconclass="" caption="Provisional Packing List" on-click="Actions.goToPage_ProvisionalPackingList.invoke()"></wm-anchor> 
+            </wm-nav-item> 
+        </wm-nav> 
+        <wm-nav name="nav2" type="navbar" class="navbar-right"> 
+            <wm-nav-item name="nav_item4"> 
+                <wm-anchor name="anchor3" caption="Help" iconclass="glyphicon glyphicon-question-sign"></wm-anchor> 
+            </wm-nav-item> 
+            <wm-nav-item name="nav_item5"></wm-nav-item> 
+            <wm-nav-item name="nav_item6"></wm-nav-item> 
+        </wm-nav> 
+    </wm-navbar> 
+</wm-partial>

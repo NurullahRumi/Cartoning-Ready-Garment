@@ -1,0 +1,179 @@
+<wm-page data-ng-controller="QryCartonedPreExportDetailsPageController" pagetitle="Qry Cartoned Pre Export Details" name="page1"> 
+    <wm-header content="header" name="header1"> 
+        <wm-param name="pTitle" value="bind:Variables.statPrgName.dataSet.dataValue" type="string"></wm-param> 
+    </wm-header> 
+    <wm-top-nav name="top_nav1" content="CartoningMainMenuNav"></wm-top-nav> 
+    <wm-content name="content1"> 
+        <wm-page-content columnwidth="12" name="page_content1"> 
+            <wm-form errormessage="" captionposition="top" title="" enctype="application/x-www-form-urlencoded" method="get" captionalign="left" name="form1"> 
+                <wm-layoutgrid columns="1" name="layoutgrid1"> 
+                    <wm-gridrow name="gridrow1"> 
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn1"> 
+                            <wm-form-field placeholder="Enter Order No" width="120" readonly="false" name="pOrdnum" displayname="Search Order No" key="pOrdnum" type="string" show="true" widget="text" defaultvalue="bind:pageParams.pOrdnum" on-change="pOrdnumChange($event, $scope, newVal, oldVal)"></wm-form-field> 
+                        </wm-gridcolumn> 
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn3"> 
+                            <wm-form-field placeholder="" width="100" readonly="false" name="pShpnum" displayname="Search Shp No." key="pShpnum" type="string" show="true" widget="text" defaultvalue="bind:pageParams.pShpnum" on-change="pShpnumChange($event, $scope, newVal, oldVal)"></wm-form-field> 
+                        </wm-gridcolumn> 
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn4"> 
+                            <wm-buttongroup horizontalalign="left" class="form-action col-md-12" name="buttongroup1"> 
+                                <wm-button caption="Query" type="submit" class="btn-primary" name="button3" margin="15px unset unset unset" on-click="button3Click($event, $scope)"></wm-button> 
+                                <wm-button on-click="btnResetClick($event, $scope)" caption="Reset" type="reset" class="btn-secondary" name="btnReset" margin="15px unset unset unset"></wm-button> 
+                            </wm-buttongroup> 
+                        </wm-gridcolumn> 
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn5"></wm-gridcolumn> 
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn6"></wm-gridcolumn> 
+                    </wm-gridrow> 
+                </wm-layoutgrid> 
+            </wm-form> 
+            <wm-table pagesize="5" showrecordcount="true" title="" dataset="bind:Variables.svProcCR1100PK0_GetOrt205Det.dataSet.poutShpDet" navigation="Classic" name="gridMaster" spacing="condensed" gridfirstrowselect="true"> 
+                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="80px" caption="Order" binding="ordnum"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="100px" caption="Client" binding="wclicod"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="40px" caption="Shp" binding="shpnum"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="40px" caption="Shp</br>Mode" binding="shpmod"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" formatpattern="toDate" datepattern="dd-MMM-yyyy" type="datetime" edit-widget-type="datetime" width="100px" caption="Schedule</br>Shipment" binding="sshpdat"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="datetime" edit-widget-type="datetime" width="80px" caption="Actual</br>Shipment" binding="ashpdat"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" formatpattern="toDate" datepattern="dd-MMM-yyyy" type="string" edit-widget-type="text" width="90px" caption="DC Date" binding="wdcdat"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="90px" caption="Destination" binding="shpdst"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="100px" caption="Client</br>Order" binding="clionum"></wm-table-column> 
+                <wm-table-column-group caption="CMT Packing" name="group"> 
+                    <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="60px" caption="" binding="pcktyp"></wm-table-column> 
+                    <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="120px" caption="" binding="wpckdes"></wm-table-column> 
+                </wm-table-column-group> 
+                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="120px" caption="Client</br>Packing" binding="clipcktyp"></wm-table-column> 
+                <wm-table-column readonly="false" show="true" type="long" edit-widget-type="number" textalignment="right" width="40px" caption="Pack</br>Unit" binding="wpckunt"></wm-table-column> 
+                <wm-table-column-group caption="Quantity" name="group1"> 
+                    <wm-table-column readonly="false" show="true" type="integer" edit-widget-type="number" textalignment="right" width="60px" widget-type="label" caption="" binding="qtyord"> 
+                        <wm-label caption="{{row.getProperty('qtyord').toLocaleString()}}" class="" data-ng-class=""></wm-label> 
+                    </wm-table-column> 
+                    <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="40px" caption="" binding="qtydes"></wm-table-column> 
+                </wm-table-column-group> 
+            </wm-table> 
+            <wm-layoutgrid name="layoutgrid3"></wm-layoutgrid> 
+            <wm-layoutgrid width="90%" name="layoutgrid2"> 
+                <wm-gridrow name="gridrow2" padding="unset unset 5px unset"> 
+                    <wm-gridcolumn columnwidth="7" name="gridcolumn6_1"> 
+                        <wm-panel badgetype="default" closable="false" collapsible="true" name="panel1" iconclass="" autoclose="outsideClick" title=""> 
+                            <wm-label textalign="left" class="col-md-2 control-label" name="label1" caption="Shipping Remarks :"></wm-label> 
+                            <wm-container class="col-md-7" name="container1"> 
+                                <wm-textarea placeholder="" readonly="true" name="textarea1" datavalue="bind:Widgets.gridMaster.selecteditem.rem"></wm-textarea> 
+                            </wm-container> 
+                        </wm-panel> 
+                    </wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="5" name="gridcolumn10"></wm-gridcolumn> 
+                </wm-gridrow> 
+                <wm-gridrow name="gridrow6"> 
+                    <wm-gridcolumn name="gridcolumn27_1" columnwidth="12"> 
+                        <wm-table showrecordcount="true" gridfirstrowselect="true" pagesize="10" class="panel-info" subheading="bind:&quot;Cartoning Details for Order &quot; + Widgets.gridMaster.selecteditem.ordnum + &quot; Shp &quot; + Widgets.gridMaster.selecteditem.shpnum" title="" dataset="bind:Variables.svProcCR1100PK0_CR400CrtPexpQty.dataSet.poutCrtPexpQty" navigation="Classic" name="grid2" spacing="condensed"> 
+                            <wm-table-column-group caption="bind:Widgets.gridMaster.selecteditem.seqcodcolumntitle" name="group"> 
+                                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="30px" caption="" binding="seqcod"></wm-table-column> 
+                                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="50px" caption="" binding="wclrdes"></wm-table-column> 
+                            </wm-table-column-group> 
+                            <wm-table-column-group caption="Size" name="group1"> 
+                                <wm-table-column readonly="false" show="true" type="byte" edit-widget-type="number" width="30px" caption="Seq" binding="szeseq"></wm-table-column> 
+                                <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" width="50px" caption="Desc" binding="wszedes"></wm-table-column> 
+                            </wm-table-column-group> 
+                            <wm-table-column readonly="false" show="true" type="integer" edit-widget-type="number" textalignment="right" width="60px" widget-type="label" caption="Qty</br>Required" binding="qtyord"> 
+                                <wm-label caption="{{row.getProperty('qtyord').toLocaleString()}}" class="" data-ng-class=""></wm-label> 
+                            </wm-table-column> 
+                            <wm-table-column readonly="false" show="true" type="double" edit-widget-type="number" textalignment="right" width="60px" widget-type="label" caption="Qty</br>Cartoned" binding="wuntin"> 
+                                <wm-label caption="{{row.getProperty('wuntin').toLocaleString()}}" class="" data-ng-class=""></wm-label> 
+                            </wm-table-column> 
+                            <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" textalignment="right" width="60px" widget-type="label" caption="Balance</br>To Carton" binding="wbalin"> 
+                                <wm-label caption="{{row.getProperty('wbalin').toLocaleString()}}" class="" data-ng-class=""></wm-label> 
+                            </wm-table-column> 
+                            <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" textalignment="right" width="50px" widget-type="label" caption="%</br>Cartoned" binding="wperIn"> 
+                                <wm-label caption="{{row.getProperty('wperIn').toLocaleString()}}" class="" data-ng-class=""></wm-label> 
+                            </wm-table-column> 
+                            <wm-table-column readonly="false" show="true" type="double" edit-widget-type="number" textalignment="right" width="60px" widget-type="label" caption="Pre</br>Export" binding="wuntout"> 
+                                <wm-label caption="{{row.getProperty('wuntout').toLocaleString()}}" class="" data-ng-class=""></wm-label> 
+                            </wm-table-column> 
+                            <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" textalignment="right" width="60px" widget-type="label" caption="Balance</br>Pre-Export" binding="wbalout"> 
+                                <wm-label caption="{{row.getProperty('wbalout').toLocaleString()}}" class="" data-ng-class=""></wm-label> 
+                            </wm-table-column> 
+                            <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" textalignment="right" width="50px" widget-type="label" caption="%</br> Pre-Export" binding="wperOut"> 
+                                <wm-label caption="{{row.getProperty('wperOut').toLocaleString()}}" class="" data-ng-class=""></wm-label> 
+                            </wm-table-column> 
+                            <wm-table-column readonly="false" show="true" type="long" edit-widget-type="number" textalignment="right" width="60px" widget-type="label" caption="Qty</br>Finalised" binding="wuntfin"> 
+                                <wm-label caption="{{row.getProperty('wuntfin').toLocaleString()}}" class="" data-ng-class=""></wm-label> 
+                            </wm-table-column> 
+                            <wm-table-column readonly="false" show="true" type="long" edit-widget-type="number" textalignment="right" width="60px" widget-type="label" caption="Pre-Export</br>Finalised" binding="wpexpFin"> 
+                                <wm-label caption="{{row.getProperty('wpexpFin').toLocaleString()}}" class="" data-ng-class=""></wm-label> 
+                            </wm-table-column> 
+                        </wm-table> 
+                    </wm-gridcolumn> 
+                </wm-gridrow> 
+                <wm-gridrow name="gridrow5_1"> 
+                    <wm-gridcolumn padding="unset unset 1px unset" name="gridcolumn26_1" columnwidth="12"> 
+                        <wm-label fontweight="bold" class="text-info h4" caption="bind:&quot;Summary for Order &quot;+Widgets.gridMaster.selecteditem.ordnum + &quot; Shipment &quot; + Widgets.gridMaster.selecteditem.shpnum" name="label24_1" padding="unset 0.5em"></wm-label> 
+                    </wm-gridcolumn> 
+                </wm-gridrow> 
+                <wm-gridrow name="gridrow7"> 
+                    <wm-gridcolumn name="gridcolumn28" columnwidth="12"> 
+                        <wm-layoutgrid class="bordered" name="layoutgrid4"> 
+                            <wm-gridrow padding="2px unset unset unset" name="gridrow8"> 
+                                <wm-gridcolumn name="gridcolumn33" columnwidth="1"> 
+                                    <wm-label name="label7" textalign="center" caption="Qty</br>Required" width="100" class="col-md-3 control-label"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn34" columnwidth="1"> 
+                                    <wm-label name="label8" textalign="center" caption="Qty</br>Cartoned" width="100" class="col-md-3 control-label"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn35" columnwidth="1"> 
+                                    <wm-label padding="unset 0.5em" name="label9" caption="Balance</br>To Carton" class="col-md-3 control-label" textalign="center" width="100"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn36" columnwidth="1"> 
+                                    <wm-label caption="Pre</br>Export" class="col-md-3 control-label" textalign="center" width="100" name="label10"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn30" columnwidth="1"> 
+                                    <wm-label caption="Balance</br> Pre-Export" class="col-md-3 control-label" textalign="center" width="100" name="label11"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn29" columnwidth="1"></wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn37" columnwidth="1"></wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn38" columnwidth="2"> 
+                                    <wm-label name="label17" caption="Cartoned from :" class="col-md-6 control-label" textalign="right" margin="unset 5px unset unset"></wm-label> 
+                                    <wm-label name="label18" class="displayField" width="79" caption="bind:Widgets.grid2.selecteditem.wcdatef | toDate: 'dd-MMM-yyyy'"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn39" columnwidth="3"> 
+                                    <wm-label name="label19" caption="to :" class="col-md-1 control-label" textalign="right" margin="unset 5px unset unset"></wm-label> 
+                                    <wm-label name="label20" class="displayField" width="79" caption="bind:Widgets.grid2.selecteditem.wcdateto | toDate: 'dd-MMM-yyyy'"></wm-label> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                            <wm-gridrow name="gridrow11"> 
+                                <wm-gridcolumn name="gridcolumn63" columnwidth="1"> 
+                                    <wm-label name="label12" class="displayField" width="100" caption="bind:Widgets.grid2.selecteditem.wtotqty.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn62" columnwidth="1"> 
+                                    <wm-label class="displayField" width="100" name="label13" caption="bind:Widgets.grid2.selecteditem.wtotin.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn61" columnwidth="1"> 
+                                    <wm-label class="displayField" width="100" name="label14" caption="bind:Widgets.grid2.selecteditem.wtotbalctn.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn60" columnwidth="1"> 
+                                    <wm-label class="displayField" width="100" name="label15" caption="bind:Widgets.grid2.selecteditem.wtotout.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn49" columnwidth="1"> 
+                                    <wm-label class="displayField" width="100" name="label16" caption="bind:Widgets.grid2.selecteditem.wtotbalexp.toLocaleString()" textalign="right"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn64" columnwidth="1"> 
+                                    <wm-label textalign="center" caption="bind:Widgets.gridMaster.selecteditem.qtydes" name="lblQTYHDR" class="displayField" width="100"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn59" columnwidth="1"></wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn50" columnwidth="2"> 
+                                    <wm-label name="label21" caption="Pre-Exported from :" class="col-md-6 control-label" textalign="right" margin="unset 5px unset unset"></wm-label> 
+                                    <wm-label name="label22" class="displayField" width="79" caption="bind:Widgets.grid2.selecteditem.wedatef | toDate: 'dd-MMM-yyyy'"></wm-label> 
+                                </wm-gridcolumn> 
+                                <wm-gridcolumn name="gridcolumn58" columnwidth="3"> 
+                                    <wm-label name="label23" caption="to :" class="col-md-1 control-label" textalign="right" margin="unset 5px unset unset"></wm-label> 
+                                    <wm-label name="label24" class="displayField" width="79" caption="bind:Widgets.grid2.selecteditem.wedateto | toDate: 'dd-MMM-yyyy'"></wm-label> 
+                                </wm-gridcolumn> 
+                            </wm-gridrow> 
+                        </wm-layoutgrid> 
+                    </wm-gridcolumn> 
+                </wm-gridrow> 
+            </wm-layoutgrid> 
+        </wm-page-content> 
+    </wm-content> 
+    <wm-footer content="footer" name="footer1"></wm-footer> 
+    <wm-view class="dialog-view" name="view1"> 
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}" on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog> 
+    </wm-view> 
+</wm-page>

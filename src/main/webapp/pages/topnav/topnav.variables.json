@@ -1,0 +1,53 @@
+{
+  "notifMsg" : {
+    "_id" : "wm-notifMsg-wm.NotificationVariable-1529570639021",
+    "name" : "notifMsg",
+    "owner" : "Page",
+    "category" : "wm.NotificationVariable",
+    "dataBinding" : [ {
+      "target" : "title",
+      "value" : "bind:Variables.statAppid.dataSet.dataValue + \" - \" +Variables.statAppName.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "alerttype",
+      "value" : "error",
+      "type" : "string"
+    } ],
+    "operation" : "alert"
+  },
+  "svCR1100pk0FetchMenuItems" : {
+    "_id" : "wm-svCR1100pk0FetchMenuItems-wm.ServiceVariable-1529059976975",
+    "name" : "svCR1100pk0FetchMenuItems",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pOrdnum",
+      "value" : "bind:pageParams.pOrdnum",
+      "type" : "string"
+    }, {
+      "target" : "pShpnum",
+      "value" : "bind:pageParams.pShpnum",
+      "type" : "string"
+    }, {
+      "target" : "pPshpnum",
+      "value" : "bind:pageParams.pPshpnum",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.Cr1100pk0fetchMenuItemsResponse",
+    "service" : "pfsdb",
+    "operation" : "executeCR1100pk0FetchMenuItems",
+    "operationId" : "ProcedureExecutionController_executeCR1100pk0FetchMenuItems",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onBeforeUpdate" : "svCR1100pk0FetchMenuItemsonBeforeUpdate($event, $scope)",
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  }
+}

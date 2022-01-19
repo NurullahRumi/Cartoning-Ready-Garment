@@ -1,0 +1,180 @@
+{
+  "notifMsg" : {
+    "_id" : "wm-notifMsg-wm.NotificationVariable-1511933832324",
+    "name" : "notifMsg",
+    "owner" : "Page",
+    "category" : "wm.NotificationVariable",
+    "dataBinding" : [ {
+      "target" : "title",
+      "value" : "bind:Variables.statPrgName.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "alerttype",
+      "value" : "error",
+      "type" : "string"
+    } ],
+    "operation" : "alert"
+  },
+  "statInOutPexr" : {
+    "_id" : "wm-statInOutPexr-wm.Variable-1511932666135",
+    "name" : "statInOutPexr",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "name" : "IN",
+      "dataValue" : "IN"
+    }, {
+      "name" : "OUT",
+      "dataValue" : "OUT"
+    }, {
+      "name" : "PEXP",
+      "dataValue" : "PEXP"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "statPrgid" : {
+    "_id" : "wm-statPrgid-wm.Variable-1511848698948",
+    "name" : "statPrgid",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "CR1100W60",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "statPrgName" : {
+    "_id" : "wm-statPrgName-wm.Variable-1511848729275",
+    "name" : "statPrgName",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Query Cartons by Colour",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "svORFetchSizes" : {
+    "_id" : "wm-svORFetchSizes-wm.ServiceVariable-1529317988840",
+    "name" : "svORFetchSizes",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.gridMaster.selecteditem.ordnum",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.Cr1100pk0fetchSizesResponse",
+    "service" : "pfsdb",
+    "operation" : "executeCR1100pk0FetchSizes",
+    "operationId" : "ProcedureExecutionController_executeCR1100pk0FetchSizes",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onBeforeUpdate" : "svORFetchSizesonBeforeUpdate($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svProcCR1100PK0_CR600PcsCartoned" : {
+    "_id" : "wm-svProcCR1100PK0_CR600PcsCartoned-wm.ServiceVariable-1511932242137",
+    "name" : "svProcCR1100PK0_CR600PcsCartoned",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.gridMaster.selecteditem.ordnum",
+      "type" : "string"
+    }, {
+      "target" : "pGmtseq",
+      "value" : "bind:Widgets.gridMaster.selecteditem.gmtseq",
+      "type" : "string"
+    }, {
+      "target" : "pClrseqg",
+      "value" : "bind:Widgets.gridMaster.selecteditem.clrseq",
+      "type" : "integer"
+    }, {
+      "target" : "pTrncode",
+      "value" : "bind:Widgets.selectInOutPexp.datavalue",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.ProcCr1100pk0Cr600pcsCartonedResponse",
+    "service" : "pfsdb",
+    "operation" : "executeProcCR1100PK0_CR600PcsCartoned",
+    "operationId" : "ProcedureExecutionController_executeProcCR1100PK0_CR600PcsCartoned",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onBeforeUpdate" : "svProcCR1100PK0_CR600PcsCartonedonBeforeUpdate($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svProcCR1100PK0_GetCartoningGmtClrDet" : {
+    "_id" : "wm-svProcCR1100PK0_GetCartoningGmtClrDet-wm.ServiceVariable-1511932082183",
+    "name" : "svProcCR1100PK0_GetCartoningGmtClrDet",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pUsrid",
+      "value" : "bind:Variables.statAppUsrid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pPrgid",
+      "value" : "bind:Variables.statPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.formFilter.formWidgets.pOrdnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pGmtseq",
+      "value" : "bind:Widgets.formFilter.formWidgets.pGmtseq.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pClrseqg",
+      "value" : "bind:Widgets.formFilter.formWidgets.pClrseqg.datavalue",
+      "type" : "integer"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.ProcCr1100pk0GetCartoningGmtClrDetResponse",
+    "service" : "pfsdb",
+    "operation" : "executeProcCR1100PK0_GetCartoningGmtClrDet",
+    "operationId" : "ProcedureExecutionController_executeProcCR1100PK0_GetCartoningGmtClrDet",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "notifMsg" : {
+    "_id" : "wm-notifMsg-wm.NotificationVariable-1512387652254",
+    "name" : "notifMsg",
+    "owner" : "Page",
+    "category" : "wm.NotificationVariable",
+    "dataBinding" : [ {
+      "target" : "title",
+      "value" : "bind:Variables.statPrgName.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "alerttype",
+      "value" : "information",
+      "type" : "string"
+    } ],
+    "operation" : "alert"
+  },
+  "statPrgid" : {
+    "_id" : "wm-statPrgid-wm.Variable-1512357843883",
+    "name" : "statPrgid",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "CR1100W40",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "statPrgName" : {
+    "_id" : "wm-statPrgName-wm.Variable-1512357868937",
+    "name" : "statPrgName",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "View Cartoning and Pre-export Details",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "svProcCR1100PK0_CR400CrtPexpQty" : {
+    "_id" : "wm-svProcCR1100PK0_CR400CrtPexpQty-wm.ServiceVariable-1512363450920",
+    "name" : "svProcCR1100PK0_CR400CrtPexpQty",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.gridMaster.selecteditem.ordnum",
+      "type" : "string"
+    }, {
+      "target" : "pShpnum",
+      "value" : "bind:Widgets.gridMaster.selecteditem.shpnum",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.ProcCr1100pk0Cr400crtPexpQtyResponse",
+    "service" : "pfsdb",
+    "operation" : "executeProcCR1100PK0_CR400CrtPexpQty",
+    "operationId" : "ProcedureExecutionController_executeProcCR1100PK0_CR400CrtPexpQty",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svProcCR1100PK0_GetOrt205Det" : {
+    "_id" : "wm-svProcCR1100PK0_GetOrt205Det-wm.ServiceVariable-1512359631057",
+    "name" : "svProcCR1100PK0_GetOrt205Det",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pPrgid",
+      "value" : "bind:Variables.statPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.form1.formWidgets.pOrdnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pShpnum",
+      "value" : "bind:Widgets.form1.formWidgets.pShpnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pUserWMRoleList",
+      "value" : "bind:Variables.loggedInUser.dataSet.roles",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.ProcCr1100pk0GetOrt205detResponse",
+    "service" : "pfsdb",
+    "operation" : "executeProcCR1100PK0_GetOrt205Det",
+    "operationId" : "ProcedureExecutionController_executeProcCR1100PK0_GetOrt205Det",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onError" : "svProcCR1100PK0_GetOrt205DetonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  }
+}

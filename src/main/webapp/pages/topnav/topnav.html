@@ -1,0 +1,24 @@
+<wm-partial data-ng-controller="topnavPageController" name="topnav" type="topnav"> 
+    <wm-navbar name="navbar1"> 
+        <wm-nav name="leftTopLinks" type="navbar" class="navbar-left"> 
+            <wm-nav-item name="list_home"></wm-nav-item> 
+            <wm-nav-item name="list_services"></wm-nav-item> 
+            <wm-nav-item name="nav_item7"> 
+                <wm-anchor on-click="Actions.goToPage_Main.invoke()" caption="Home" iconclass="wi wi-home" name="anchor2"></wm-anchor> 
+            </wm-nav-item> 
+            <wm-nav-item name="nav_item5"> 
+                <wm-menu menuclass="btn-transparent" menulayout="vertical" on-select="CartoningMenuSelect($event, $scope, $item)" width="300" linktarget="_blank" orderby="itemseq:asc" itemlabel="progname" dataset="bind:Variables.svCR1100pk0FetchMenuItems.dataSet.poutMenuItems" iconclass="wi wi-menu" name="CartoningMenu" caption="Cartoning Details" autoclose="always"></wm-menu> 
+            </wm-nav-item> 
+            <wm-nav-item name="nav_item6"></wm-nav-item> 
+        </wm-nav> 
+        <wm-nav name="rightTopLinks" type="navbar" class="navbar-right"> 
+            <wm-nav-item name="list_help"> 
+                <wm-anchor caption="Help" name="helpLink" iconclass="wi wi-help-outline"></wm-anchor> 
+            </wm-nav-item> 
+            <wm-nav-item name="list_logout"></wm-nav-item> 
+        </wm-nav> 
+    </wm-navbar> 
+    <wm-view name="view1" class="dialog-view"> 
+        <wm-alertdialog on-close="variableOnClose()" on-ok="variableOnOk()" alerttype="{{notification.alerttype}}" oktext="{{notification.okButtonText}}" title="{{notification.title}}" message="{{notification.text}}" notificationdialog="alert" controller="NotificationDialogController" name="notificationalertdialog"></wm-alertdialog> 
+    </wm-view> 
+</wm-partial>

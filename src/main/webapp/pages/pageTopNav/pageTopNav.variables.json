@@ -1,0 +1,26 @@
+{
+  "svSY9200pk0CallFmbpath" : {
+    "_id" : "wm-svSY9200pk0CallFmbpath-wm.ServiceVariable-1529645494210",
+    "name" : "svSY9200pk0CallFmbpath",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.query.QryCallFmbPathResponse",
+    "service" : "pfsdb",
+    "operation" : "executeQryCallFmbPath",
+    "operationId" : "QueryExecutionController_executeQryCallFmbPath",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onBeforeUpdate" : "svSY9200pk0CallFmbpathonBeforeUpdate($event, $scope)",
+    "onSuccess" : "svSY9200pk0CallFmbpathonSuccess($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  }
+}

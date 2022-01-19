@@ -1,0 +1,41 @@
+[ {
+  "urlPattern" : "/pages/ExportDesktop/**",
+  "permission" : "Role",
+  "roles" : [ "EXPDESKTOP_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/Login/**",
+  "permission" : "PermitAll",
+  "roles" : [ ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/Main/**",
+  "permission" : "Authenticated",
+  "roles" : [ ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/ProvisionalPackingList/**",
+  "permission" : "Role",
+  "roles" : [ "PROVISIONALPKL_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/QryCartonedPreExportDetails/**",
+  "permission" : "Role",
+  "roles" : [ "CARTONPREEXP_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/QryCartonsByColour/**",
+  "permission" : "Role",
+  "roles" : [ "CARTONBYCLR_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/QryPackingList/**",
+  "permission" : "Role",
+  "roles" : [ "PACKINGLIST_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/**",
+  "permission" : "Authenticated",
+  "roles" : null,
+  "httpMethod" : null
+} ]

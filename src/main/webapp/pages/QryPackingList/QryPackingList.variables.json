@@ -1,0 +1,190 @@
+{
+  "notifMsg" : {
+    "_id" : "wm-notifMsg-wm.NotificationVariable-1512299336672",
+    "name" : "notifMsg",
+    "owner" : "Page",
+    "category" : "wm.NotificationVariable",
+    "dataBinding" : [ {
+      "target" : "title",
+      "value" : "bind:Variables.statPrgName.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "alerttype",
+      "value" : "information",
+      "type" : "string"
+    } ],
+    "operation" : "alert"
+  },
+  "statPrgid" : {
+    "_id" : "wm-statPrgid-wm.Variable-1512021467898",
+    "name" : "statPrgid",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "CR1100W65",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "statPrgName" : {
+    "_id" : "wm-statPrgName-wm.Variable-1512021512160",
+    "name" : "statPrgName",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Query Packing List",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "svCR1100pk0FetchSizes" : {
+    "_id" : "wm-svCR1100pk0FetchSizes-wm.ServiceVariable-1528971451881",
+    "name" : "svCR1100pk0FetchSizes",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.gridMaster.selecteditem.ordnum",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.Cr1100pk0fetchSizesResponse",
+    "service" : "pfsdb",
+    "operation" : "executeCR1100pk0FetchSizes",
+    "operationId" : "ProcedureExecutionController_executeCR1100pk0FetchSizes",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svProcCR1100PK0_CR610PklQty" : {
+    "_id" : "wm-svProcCR1100PK0_CR610PklQty-wm.ServiceVariable-1512277988909",
+    "name" : "svProcCR1100PK0_CR610PklQty",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.gridMaster.selecteditem.ordnum",
+      "type" : "string"
+    }, {
+      "target" : "pShpnum",
+      "value" : "bind:Widgets.gridMaster.selecteditem.shpnum",
+      "type" : "string"
+    }, {
+      "target" : "pPshpnum",
+      "value" : "bind:Widgets.gridMaster.selecteditem.pshpnum",
+      "type" : "integer"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.ProcCr1100pk0Cr610pklQtyResponse",
+    "service" : "pfsdb",
+    "operation" : "executeProcCR1100PK0_CR610PklQty",
+    "operationId" : "ProcedureExecutionController_executeProcCR1100PK0_CR610PklQty",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svProcCR1100PK0_CR610PklQtyonSuccess($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svProcCR1100PK0_CR610PklQtyPerPack" : {
+    "_id" : "wm-svProcCR1100PK0_CR610PklQtyPerPack-wm.ServiceVariable-1512277942231",
+    "name" : "svProcCR1100PK0_CR610PklQtyPerPack",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.gridDetail.selecteditem.ordnum",
+      "type" : "string"
+    }, {
+      "target" : "pShpnum",
+      "value" : "bind:Widgets.gridDetail.selecteditem.shpnum",
+      "type" : "string"
+    }, {
+      "target" : "pPshpnum",
+      "value" : "bind:Widgets.gridDetail.selecteditem.pshpnum",
+      "type" : "integer"
+    }, {
+      "target" : "pSeqcod",
+      "value" : "bind:Widgets.gridDetail.selecteditem.seqcod",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.ProcCr1100pk0Cr610pklQtyPerPackResponse",
+    "service" : "pfsdb",
+    "operation" : "executeProcCR1100PK0_CR610PklQtyPerPack",
+    "operationId" : "ProcedureExecutionController_executeProcCR1100PK0_CR610PklQtyPerPack",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svProcCR1100PK0_GetSht700Det" : {
+    "_id" : "wm-svProcCR1100PK0_GetSht700Det-wm.ServiceVariable-1512023028149",
+    "name" : "svProcCR1100PK0_GetSht700Det",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pPrgid",
+      "value" : "bind:Variables.statPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.formFilter.formWidgets.pOrdnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pShpnum",
+      "value" : "bind:Widgets.formFilter.formWidgets.pShpnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pPShpnum",
+      "value" : "bind:Widgets.formFilter.formWidgets.pPShpnum.datavalue",
+      "type" : "integer"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.ProcCr1100pk0GetSht700detResponse",
+    "service" : "pfsdb",
+    "operation" : "executeProcCR1100PK0_GetSht700Det",
+    "operationId" : "ProcedureExecutionController_executeProcCR1100PK0_GetSht700Det",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onBeforeUpdate" : "svProcCR1100PK0_GetSht700DetonBeforeUpdate($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  }
+}
